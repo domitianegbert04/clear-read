@@ -31,20 +31,17 @@ fileInput.addEventListener('change', (e) => {
     const reader = new FileReader();
     
     reader.onload = (event) => {
-        const text = event.target.result;
-        // Create the clean HTML page
-        const htmlContent = `
+        // Use srcdoc for instant rendering without needing to manage Blob URLs
+        frame.srcdoc = `
             <html>
-                <head><style>
-                    body { background: #f4f4f4; color: #1a1a1a; font-family: Georgia, serif; line-height: 1.6; padding: 40px; }
-                    div { max-width: 65ch; margin: auto; }
-                </style></head>
-                <body><div>${text}</div></body>
+                <body style="font-family: Georgia, serif; padding: 40px; line-height: 1.6; background: #f4f4f4;">
+                    <div style="max-width: 65ch; margin: auto;">
+                        ${event.target.result.replace(/\n/g, '<br>')}
+                    </div>
+                </body>
             </html>`;
-        
-        const blob = new Blob([htmlContent], {type: 'text/html'});
-        frame.src = URL.createObjectURL(blob);
     };
     reader.readAsText(file);
 });
+
 
