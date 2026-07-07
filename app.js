@@ -2,6 +2,23 @@ const loadBtn = document.getElementById('loadBtn');
 const urlInput = document.getElementById('urlInput');
 const frame = document.getElementById('readerFrame');
 const fileInput = document.getElementById('fileInput');
+const themeToggle = document.getElementById('themeToggle');
+let isDarkMode = false;
+
+themeToggle.addEventListener('click', () => {
+    isDarkMode = !isDarkMode;
+    const backgroundColor = isDarkMode ? '#1a1a1a' : '#f4f4f4';
+    const textColor = isDarkMode ? '#e0e0e0' : '#1a1a1a';
+    
+    // Apply to iframe document directly
+    const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+    iframeDoc.body.style.backgroundColor = backgroundColor;
+    iframeDoc.body.style.color = textColor;
+});
+
+document.getElementById('printBtn').addEventListener('click', () => {
+    frame.contentWindow.print();
+});
 
 // Logic for URL loading
 loadBtn.addEventListener('click', () => {
