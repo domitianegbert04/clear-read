@@ -61,4 +61,20 @@ fileInput.addEventListener('change', (e) => {
     reader.readAsText(file);
 });
 
+// Theme Toggle Logic
+themeToggle.addEventListener('click', () => {
+    isDarkMode = !isDarkMode;
+    const body = frame.contentDocument.body;
+    
+    // We update the styles directly on the iframe's body
+    body.style.backgroundColor = isDarkMode ? '#1a1a1a' : '#f4f4f4';
+    body.style.color = isDarkMode ? '#e0e0e0' : '#1a1a1a';
+});
+
+// Print Logic
+document.getElementById('printBtn').addEventListener('click', () => {
+    // This tells the iframe window to focus and open the print dialog
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+});
 
