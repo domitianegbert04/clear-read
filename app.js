@@ -1,27 +1,33 @@
 const loadBtn = document.getElementById('loadBtn');
 const urlInput = document.getElementById('urlInput');
 const frame = document.getElementById('readerFrame');
+const fileInput = document.getElementById('fileInput');
 
+// Logic for URL loading
 loadBtn.addEventListener('click', () => {
     frame.src = urlInput.value;
 });
 
+// Inject CSS whenever a remote URL loads in the iframe
 frame.addEventListener('load', () => {
-    // Inject custom CSS into the iframe
-    const style = document.createElement('style');
-    style.textContent = `
-        body { background: #f4f4f4 !important; color: #1a1a1a !important; font-family: Georgia, serif !important; }
-        p { max-width: 65ch; margin: 1em auto; line-height: 1.6; }
-        nav, footer, aside, .ad, .sidebar { display: none !important; }
-    `;
-    frame.contentDocument.head.appendChild(style);
+    try {
+        const style = document.createElement('style');
+        style.textContent = `
+            body { background: #f4f4f4 !important; color: #1a1a1a !important; font-family: Georgia, serif !important; }
+            p { max-width: 65ch; margin: 1em auto; line-height: 1.6; }
+            nav, footer, aside, .ad, .sidebar { display: none !important; }
+        `;
+        frame.contentDocument.head.appendChild(style);
+    } catch (e) {
+        console.log("Could not inject CSS (likely a cross-origin security block).");
+    }
+});
 
-
- const fileInput = document.getElementById('fileInput');
-
-// Replace your existing file input listener with this to ensure the CSS sticks
+// Logic for local file uploading
 fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
+    if (!file) return;
+    
     const reader = new FileReader();
     
     reader.onload = (event) => {
