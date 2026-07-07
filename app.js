@@ -41,5 +41,4 @@ fileInput.addEventListener('change', (e) => {
     };
     reader.readAsText(file);
 });
-});   
-});
+
