@@ -1,29 +1,40 @@
-# clear-read
+# ClearRead
 
-A minimalist, browser-native reading utility designed to strip away web clutter and distractions. 
+**A minimalist, distraction-free reading utility designed for the modern web.**
 
 [👉 View Live Demo](https://domitianegbert04.github.io/clear-read/)
 
-## About
-Modern websites are often bloated with navigation bars, sidebars, advertisements, and trackers that detract from the reading experience. **clear-read** provides a clean, "E-Ink" aesthetic that forces high-readability typography and a distraction-free layout.
+---
 
-## Features
-* **Dual-Mode Content Processing:**
-    * **Remote URLs:** View articles in a distraction-free iframe (where security policies permit).
-    * **Local Files:** Upload your own `.txt` or `.md` files to render them in a clean, focused reading environment, bypassing all CORS restrictions.
-* **E-Ink Aesthetic:** Uses high-contrast grayscale palettes and serif typography to minimize eye strain.
-* **Client-Side Only:** No backend, no APIs, and no tracking. Everything runs directly in your browser.
+## 📖 Overview
+The modern web is cluttered with sidebars, advertisements, trackers, and navigation menus. `clear-read` strips away this "noise," delivering an "E-Ink" style reading experience. Whether you are reviewing technical documentation, reading long-form essays, or analyzing your own local markdown notes, `clear-read` provides a focused, high-readability environment.
 
-## How to use
-1. Visit the [Live Demo](https://domitianegbert04.github.io/clear-read/).
-2. **For URLs:** Paste an article URL and click "Render URL". 
-   *(Note: Some sites use security headers like `X-Frame-Options` that prevent embedding. If a page refuses to load, try a different source.)*
-3. **For Local Files:** Use the file input to select a text or markdown file from your computer to read it instantly in "Zen mode".
+## ✨ Core Features
+* **Dual-Mode Content Engine:**
+    * **Remote URL Processing:** View web articles in a sanitized, reader-first layout.
+    * **Local-First Parsing:** Upload `.txt` or `.md` files directly. This bypasses CORS and security restrictions, ensuring you can read your private documents securely in your browser.
+* **Customizable "Zen Mode":**
+    * **Dark/Light Theme Toggle:** Instantly adjust your reading environment for optimal eye comfort.
+    * **Print to PDF:** Need an offline copy? Export your clean, formatted text directly to PDF.
+* **Browser-Native Security:** * Uses secure `sandbox` attributes to handle content rendering safely while allowing essential functionality like printing.
+    * Zero-backend architecture: Your data never leaves your browser.
 
-## Technical Stack
-- **Vanilla JavaScript:** DOM manipulation and `FileReader`/`Blob` APIs.
-- **CSS Injection:** Dynamic stylesheet application for distraction-free rendering.
-- **Hosting:** GitHub Pages.
+## 🚀 How to Use
+1.  **Open the App:** Navigate to the [Live Demo](https://domitianegbert04.github.io/clear-read/).
+2.  **View Online:** Paste a URL and click **Render URL**. *(Note: Due to web security policies, some high-security sites may restrict external embedding.)*
+3.  **Read Local Files:** Click **Choose File** to upload your own markdown or text documents.
+4.  **Customize:** Use the **Toggle Theme** button to switch to Dark Mode or **Export to PDF** to save your content.
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
+## 🛠 Technical Implementation
+* **Frontend:** Vanilla JavaScript, HTML5, and CSS3.
+* **Content Handling:** Utilizes `srcdoc` and `Blob` APIs for secure local content injection.
+* **Styling:** Dynamic CSS injection to override existing web page layouts with custom typography (Georgia, serif).
+* **Security Architecture:** Implements a sandboxed `iframe` configuration with `allow-modals` for print support.
+
+
+
+## 🤝 Contributing
+Built as a personal utility, this project focuses on privacy and simplicity. Feel free to fork the repository and submit pull requests for features like persistent local storage or advanced Markdown parsing!
+
+## 📄 License
+Distributed under the MIT License.
