@@ -15,4 +15,21 @@ frame.addEventListener('load', () => {
         nav, footer, aside, .ad, .sidebar { display: none !important; }
     `;
     frame.contentDocument.head.appendChild(style);
+
+
+ const fileInput = document.getElementById('fileInput');
+
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const text = event.target.result;
+        // Inject content into the iframe as a Blob/Data URI
+        const blob = new Blob([`<html><body><div class="e-ink-mode">${text}</div></body></html>`], {type: 'text/html'});
+        frame.src = URL.createObjectURL(blob);
+    };
+    reader.readAsText(file);
+});   
 });
