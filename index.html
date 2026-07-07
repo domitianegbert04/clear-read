@@ -7,9 +7,10 @@
 </head>
 <body>
     <div id="controls">
-        <input type="text" id="urlInput" placeholder="Paste article URL here...">
-        <button id="loadBtn">Render</button>
-    </div>
+    <input type="text" id="urlInput" placeholder="Paste URL...">
+    <button id="loadBtn">Render URL</button>
+    <input type="file" id="fileInput" accept=".txt, .md">
+</div>
     <iframe id="readerFrame" sandbox="allow-same-origin allow-scripts"></iframe>
     <script src="app.js"></script>
 </body>
