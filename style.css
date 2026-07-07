@@ -1,0 +1,20 @@
+body { margin: 0; font-family: sans-serif; background: #222; }
+#controls { padding: 10px; background: #333; display: flex; gap: 10px; }
+#urlInput { flex-grow: 1; padding: 5px; }
+iframe { width: 100%; height: calc(100vh - 40px); border: none; background: white; }
+
+/* This is the style we will inject into the iframe later */
+.e-ink-mode {
+    background: #f4f4f4 !important;
+    color: #1a1a1a !important;
+    font-family: 'Georgia', serif !important;
+    line-height: 1.6 !important;
+}
+.e-ink-mode article, .e-ink-mode p {
+    max-width: 65ch !important;
+    margin: 20px auto !important;
+}
+/* Hide distractions */
+.e-ink-mode nav, .e-ink-mode footer, .e-ink-mode aside, .e-ink-mode .ads {
+    display: none !important;
+}
